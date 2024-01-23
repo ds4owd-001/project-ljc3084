@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-##Project Description:-
+## Project Description:-
 
 1.  The objective of this project will be analysing and interpreting the raw borehole repair data to improve decision making.
 
@@ -32,3 +32,31 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+read.csv(here::here("data/raw/borehole_repair_data.csv"))
+```
+
+```{r}
+read.csv(here::here("data/processed/processed_borehole_data.csv"))
+```
+
+```{r}
+setwd("data/processed")
+```
+
+
+```{r}
+processed_clean_data <- read_csv("data/processed/processed_borehole_data.csv")
+```
+
+```{r}
+library(tidyr)
+my_data_clean <- my_data %>% drop_na()
+```
+
+
