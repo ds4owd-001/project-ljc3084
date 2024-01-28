@@ -1,1 +1,11 @@
 ﻿variable_name,description
+community,local name used to refer to the administrative unit five where the borehole is located 
+parish,local name used to refer to the administrative unit four where the borehole is located 
+sub_county,local name used to refer to the administrative unit three where the borehole is located 
+source_id,unique identification number assigned by the borehole maintenance company
+repair_date,The date of the most recent repair date of the borehole
+population_served,The number of people that collect water from the borehole
+well_depth,The total depth of the borehole in meters
+static_water_depth,The stable water level within the borehole when pumping isn't happening from the land surface to striking the water and it is measured in meters.
+pump_installation_depth,The depth within the borehole that the pump is installed from the land surface. It is measured in meters
+well_yield,The water production capacity of the borehole measured in m3/hr.

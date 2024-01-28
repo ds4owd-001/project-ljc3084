@@ -15,10 +15,48 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(tidyr)
 ```
 
 ```{r}
 borehole <- read_csv(here::here("data/raw/borehole_repair_data.csv"))
+```
+
+```{r}
+glimpse(borehole)
+```
+
+```{r}
+new_well_yield <- borehole |> 
+   rename("well_yield" = "well_yield_(m^3/hr)")
+```
+
+```{r}
+glimpse(new_well_yield)
+
+new_well_yield |> 
+  filter(is.na(community))
+```
+
+```{r}
+processed_borehole_data <- new_well_yield |>  drop_na()
+```
+
+```{r}
+glimpse(processed_borehole_data)
+```
+
+```{r}
+write.csv(here::here("data/raw/processed_borehole_data.csv"))
+
+```
+
+```{r}
+
+```
+
+```{r}
+
 ```
 
 ## Quarto
@@ -41,7 +79,6 @@ You can add options to executable code like this
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
-
 
 # Methods
 
