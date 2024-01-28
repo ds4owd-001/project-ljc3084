@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Joseph Lwere">
+<meta name="dcterms.date" content="2024-02-13">
 
-<title>Borehole data analysis for clean water access</title>
+<title>Borehole Data Analysis for Clean Water Access</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,22 +73,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#project-description-" id="toc-project-description-" class="nav-link" data-scroll-target="#project-description-">Project Description:-</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Borehole data analysis for clean water access</h1>
+<h1 class="title">Borehole Data Analysis for Clean Water Access</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joseph Lwere </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 13, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -94,561 +125,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <section id="project-description-" class="level2">
 <h2 class="anchored" data-anchor-id="project-description-">Project Description:-</h2>
 <ol type="1">
-<li>The objective of this project will be analysing and interpreting the raw borehole repair data to improve decision making.</li>
+<li>The objective of this project will be analyzing and interpreting the raw borehole repair data to improve decision making.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/borehole_repair_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                    community           parish             sub_county source_id
-1                     Kiduula        KABUNYATA                 Kamira       850
-2                     Wantula         SEKAMULI             Bamunanika       846
-3                   Kikondere       KYAWANGABI            Butuntumula       953
-4                  Nakabululu          BUBUUBI                Zirobwe       848
-5                      Lukowe          KIBENGO                Kikyusa       849
-6                    Mpangati           BUKIMU                Zirobwe       847
-7                     Mpeeka             KASWA                 Kamira      1018
-8               Kirimantungo             MAZZI                 Kamira      1022
-9                   Nanteeko          NAMBEERE                 Kamira      1024
-10                     Kamira            KASWA                 Kamira      1020
-11                   Butto A          KYAMPISI             Bamunanika      1025
-12                      Keera          KATAGWE                 Kamira      1019
-13                 Bakatadde          NAMBEERE                 Kamira      1023
-14                 Kyajjagali           MABUYE                 Kamira      1021
-15                  Ssekamuli         SEKAMULI             Bamunanika      1027
-16                      Ggavu         KIBIRIZI             Bamunanika      1026
-17                 Wabitunda           KIBANYI             Bamunanika       720
-18                   Kibanyi           KIBANYI             Bamunanika       721
-19                   Kibanyi           KIBANYI             Bamunanika       724
-20                   Kanjuki           KIBANYI             Bamunanika       723
-21                    Kkalwe           KIBANYI             Bamunanika       725
-22                     Kkalwe          KIBANYI             Bamunanika       726
-23               Galikwoleka          NAMBEERE                 Kamira       722
-24          Mazzi Nakyefumula            MAZZI                 Kamira       729
-25             Mazzi Wambiito            MAZZI                 Kamira      1028
-26             Mazzi Wambiito            MAZZI                 Kamira      1031
-27            Kakira-Kibanga             MAZZI                 Kamira      1030
-28              Kyampologoma            MABUYE                 Kamira      1029
-29               Namatogonya           KYETUME                Zirobwe      1032
-30               Makonkonyigo          KATAGWE                 Kamira      1034
-31              Makonkonyigo           KATAGWE                 Kamira      1033
-32                Kyampogola      KYAMPOLOGOMA                Kikyusa      1036
-33                  Kankoole          WABUSANA                Kikyusa      1037
-34                  Wabusana          WABUSANA                Kikyusa       851
-35                   Kikabya          KYAMPISI             Bamunanika       773
-36                    Kiyunga        MPOLOGOMA             Bamunanika      1038
-37                  Kyampisi            KIKUBE                 Luwero      1041
-38                    Nkuluze         KIBIRIZI             Bamunanika       540
-39  Kiwangaza Zone, Kyampisi            KIKUBE                 Luwero      1039
-40                  Kyampisi            KIKUBE                 Luwero      1040
-41                  Kyampisi            KIKUBE                 Luwero      1041
-42                  Bwetyaba         WALULEETA             Makulubita      1103
-43              Kabengeredwa            KASOZI             Makulubita       676
-44                    Maggwa            KASOZI             Makulubita       675
-45                   Lubwama            KASOZI             Makulubita      1104
-46                 Nkokonjeru       NKOKONJERU               Bombo Tc       684
-47                   Masinga      KYAMPOLOGOMA                Kikyusa      1123
-48                    Namyeso           KAGOGO             Makulubita      1122
-49                   Lukyaamu       BUKAMBAGGA                 Luwero      1125
-50                  Kanyogoga           KIKUBE                 Luwero      1128
-51                       Mawu            NSAVU             Makulubita      1124
-52                  Kabakedi          KABAKEDI                 Luwero      1042
-53  Kiwangaza Zone, Kyampisi            KIKUBE                 Luwero      1105
-54                   Kamwano           KYETUME                Zirobwe      1102
-55                   Kakuuto       BAMUGOLODDE            Butuntumula      1127
-56                   Lukyaamu       BUKAMBAGGA                 Luwero      1126
-57                 Tebalyala           BWEYEYO                 Luwero       943
-58             Kito-Kanyanda          KANYANDA             Makulubita      1121
-59            Mulama Kitebere         KANYANDA             Makulubita      1106
-60                    Kyondo        KYAWANGABI            Butuntumula      1132
-61                 Bakatadde          NAMBEERE                 Kamira      1130
-62                     Mabuye           MABUYE                 Kamira      1131
-63                     Kawula           KIKUBE                 Luwero      1149
-64                   Nambeere         NAMBEERE                 Kamira      1107
-65                  Bukekete            KASOZI             Makulubita      1154
-66                Kyamuwooya            KASOZI             Makulubita      1153
-67               Namatogonya          KAKABALA            Butuntumula      1129
-68                 Tebalyala           BWEYEYO                 Luwero      1155
-69              Kyampologoma            MABUYE                 Kamira       886
-70                    Bweyeyo          BWEYEYO                 Luwero      1133
-71          Katikamu Kasenene         KATIKAMU           Wobulenzi Tc      1160
-72                   Kangave           KANGAVE             Makulubita      1159
-73                   Kikandwa            KASWA                 Kamira      1157
-74                   Bukajja          LUNYOLYA               Kalagala      1156
-75                  Katabona           KIBENGO                Kikyusa      1161
-76                    Bukiibi          KATAGWE                 Kamira      1158
-77                     Bugabo           MABUYE                 Kamira      1184
-78                     Wesune            NSAVU             Makulubita      1185
-79                     Mugogo       MAKULUBITA             Makulubita      1187
-80                     Mugogo       MAKULUBITA             Makulubita      1186
-81                  Kalanamu          KALANAMU               Kalagala      1190
-82                   Busaakwa          KAYINDU               Kalagala      1192
-83            Degeya Central           DDEGEYA               Kalagala      1191
-84        Lutete - Bamunanika         KYAMPISI             Bamunanika      1188
-85               Namwatulira           DDEGEYA               Kalagala      1189
-86                  Kayindu A          KAYINDU               Kalagala      1193
-87               Makulubita A       MAKULUBITA             Makulubita      1195
-88         Namayamba - Luwero            NSAVU             Makulubita       713
-89                    Buligwe           KAGOGO             Makulubita      1196
-90         Namayamba - Luwero            NSAVU             Makulubita       714
-91                   Saagala            BUSOKE               Kalagala      1199
-92                    Nansaka       KYAWANGABI            Butuntumula      1197
-93                     Kiiya           NGOGOLO            Butuntumula      1198
-94                 Namalimba           KIBENGO                Kikyusa      1329
-95                       Bowa           KAGOGO             Makulubita      1200
-96                   Bugungu         WALULEETA             Makulubita      1330
-97                    Namyeso           KAGOGO             Makulubita      1331
-98                       Bowa           KAGOGO             Makulubita       771
-99                  Nakibengo         KALANAMU               Kalagala      1332
-100        Butanza Lwannyonyi       KYALUGONDO               Katikamu      1333
-101                Nakibengo          KALANAMU               Kalagala      1177
-102                   Lukiizi         KALWANGA            Butuntumula      1071
-103                  Kalungu          KALANAMU               Kalagala      1175
-104                 Nabitete           BUBUUBI                Zirobwe      1178
-105                 Bwetyaba         WALULEETA             Makulubita       708
-106                   Mugogo        MAKULUBITA             Makulubita      1306
-107        Butanza Lwannyonyi       KYALUGONDO               Katikamu      1307
-108                   Kisubi          LUNYOLYA               Kalagala      1305
-109         Kanyogoga-Kikyusa           KIZIBA                Kikyusa      1310
-110                Kanyike B           MIGADDE               Katikamu      1311
-111                    Kikoza       KYALUGONDO               Katikamu      1312
-112                    Timba        NGALONKALU                Zirobwe      1313
-113                  Lukomera          MIGADDE               Katikamu      1308
-114                     Ngabo       KYALUGONDO               Katikamu      1316
-115             Koojo-proper           MIGADDE               Katikamu      1314
-116          Bamugolodde LC1       BAMUGOLODDE            Butuntumula       834
-117                    Sempa          TWEYANZE               Katikamu      1317
-118                    Gwaffu          BUKOLWA           Wobulenzi Tc      1383
-119                 Kalanamu          KALANAMU               Kalagala      1176
-120                   Kigulu    WOBULENZI EAST           Wobulenzi Tc      1429
-121             Makonkonyigo           KATAGWE                 Kamira     1414a
-122         Kanyogoga-Kikyusa           KIZIBA                Kikyusa      1309
-123                     Ngabo       KYALUGONDO               Katikamu      1455
-124                    Kaswa           MUSAALE               Katikamu      1303
-125          Bamugolodde LC1       BAMUGOLODDE            Butuntumula      1454
-126                    Gulama           BUYUKI               Katikamu      1301
-127                    Gulama           BUYUKI               Katikamu      1300
-128                  Lukomera          MIGADDE               Katikamu      1302
-129                      Kawe     KYAMPOLOGOMA                Kikyusa       904
-130                  Kikunyu           KANGAVE             Makulubita     1476a
-131          Katikamu Proper           BUKOLWA           Wobulenzi Tc      1304
-132                 Kiduukulu       MAKULUBITA             Makulubita      1385
-133                  Busula B          MUSAALE               Katikamu      1384
-134    Bukusu-Makulubita 'B'        MAKULUBITA             Makulubita      1471
-135                    Kitto          TWEYANZE               Katikamu      1419
-136                    Timba        NGALONKALU                Zirobwe      1461
-137                  Masinga      KYAMPOLOGOMA                Kikyusa      1388
-138                     Kiiso        KABUNYATA                 Kamira      1389
-139                 Nsozibiri          KIGOMBE                 Luwero      1456
-140             Katikamu SDA          KATIKAMU           Wobulenzi Tc      1483
-141                  Mpumudde        WALULEETA             Makulubita      1485
-142                   Kyakula           MABUYE                 Kamira      1486
-143       Ntinda-Buligwe LC1            KAGOGO             Makulubita      1506
-144                    Mulira            NSAVU             Makulubita       795
-145                    Lukira       KYALUGONDO               Katikamu      1484
-146         Kasoma Zone (LC1) LUWERO WEST WARD              Luwero Tc      1490
-147                Kkungu LC1           KIKOMA               Katikamu     1477b
-148                 Semyungu           MPWEDDE             Kasangombe      1194
-149                   Kasozi              LUGO               Busukuma       989
-150       Kiwenda - Nazaleesi          KIWENDA               Busukuma       991
-151                  Kabumba           KABUMBA               Busukuma       988
-152                     Nsasa             KIRA                   Kira       727
-153                 Namulonge           KIKOKO               Busukuma       728
-154                   Bulindo             KIRA                   Kira       990
-155                 Nabitalo           KIWENDA               Busukuma       996
-156                 Nabitalo           KIWENDA               Busukuma       992
-157                   Kabonge        WAMIRONGO               Busukuma       993
-158          Menvu 2 Luteete              LUGO               Busukuma       995
-159             Menvu-Luteete             LUGO               Busukuma       994
-160                   Kiti A           WATTUBA Kasangati Town Council      1135
-161                 Kitukutwe         KIMWANYI                   Kira      1165
-162                    Nasse             NASSE                  Gombe       427
-163                    Kamuli           KAMULI                 Kakiri      1167
-164                   Bukemba          MAGIGYE               Busukuma       537
-165                 Ngongolo          NGONGOLO  Kajjansi Town Council     1413a
-166                    Luguzi           LUGUZI Namayumba Town Council      1450
-167               Gala Nalya          NAMPUNGE                 Kakiri      1432
-168                   Busonko          MAGOGGO                 Kakiri      1451
-169                   Busonko          MAGOGGO                 Kakiri      1467
-170       Sentema - Kimbejja          SSENTEMA                 Kakiri     1433a
-171                   Busujja     BUSUJJA WARD    Kakiri Town Council      1514
-172                                                                        1035
-173                                                                        1140
-    repair_date population_served well_depth static_water_depth
-1    2021-10-28               120     139.23              17.50
-2    2021-10-28               132      54.96              31.90
-3    2021-10-28               123      79.50              16.74
-4    2021-10-28                68      82.70              26.48
-5    2021-10-28                90     121.23              24.70
-6    2021-10-28               149      42.80              17.07
-7    2021-11-25               103      86.40              33.60
-8    2021-11-28                34      45.40              11.50
-9    2021-11-29                69      63.60              23.60
-10   2021-11-27                17      56.00              26.06
-11   2021-11-30               119      45.10              16.10
-12   2021-11-27               103      88.70              32.00
-13   2021-11-28               309      46.00              18.00
-14   2021-11-29               172      63.60              30.30
-15   2021-12-03               278      33.30               6.40
-16   2021-12-03               304      67.90              18.20
-17   2021-12-15               396      82.30              20.12
-18   2021-12-15               819      34.75              23.77
-19   2021-12-23                93      42.06              14.63
-20   2021-12-23               383      42.06              22.56
-21   2021-12-29               159      48.77              18.29
-22   2021-12-30                66      67.97               9.14
-23   2021-12-31               343      37.49              12.19
-24   2022-01-01               618      58.52              24.08
-25   2022-01-13               137      58.83              22.25
-26   2022-01-15               584      46.63              16.15
-27   2022-01-14               137      34.75              10.67
-28   2022-01-14               841      86.87              35.05
-29   2022-01-15               136      83.82              32.00
-30   2022-01-26               120      70.10              37.19
-31   2022-01-25               378      65.53              40.54
-32   2022-01-27               825      53.64              10.67
-33   2022-01-27               435      24.38              17.07
-34   2022-01-27                60     118.20              30.40
-35   2022-02-02               198      48.77              15.85
-36   2022-02-01               106      57.30              12.19
-37   2022-02-04               163      63.40              35.36
-38   2022-02-02               238      64.01              21.95
-39   2022-02-03                63      67.06              36.58
-40   2022-02-08               150      61.57              29.26
-41   2022-02-03               163      35.30              63.00
-42   2022-03-15                90      50.29              22.86
-43   2022-03-15               166      82.20              18.20
-44   2022-03-15               193      48.70              18.20
-45   2022-03-15                77      82.20              15.20
-46   2022-03-24             4,444      53.34              21.95
-47   2022-04-06               210      58.52              42.37
-48   2022-04-07               211      63.40              16.76
-49   2022-04-22               163      67.06              33.53
-50   2022-04-21               213      56.39              16.76
-51   2022-04-08               359      39.62              13.72
-52   2022-03-03               376      80.77              19.81
-53   2022-04-06                13      74.68              34.14
-54   2022-03-03               190      45.72              20.73
-55   2022-04-22             1,021      67.06              13.72
-56   2022-04-22               213      53.34              21.34
-57   2022-03-21               225      50.03              12.37
-58   2022-04-07             1,063      53.34              16.76
-59   2022-05-21               141      51.82               9.75
-60   2022-05-20               191      55.47              19.81
-61   2022-05-18               275      57.91              17.07
-62   2022-05-19               292      32.92              12.50
-63   2022-06-22                75      62.18              24.99
-64   2022-06-22               137      64.01              15.24
-65   2022-06-30               141      60.96              23.47
-66   2022-06-30               205      72.24              17.98
-67   2022-05-05               204      55.40              16.10
-68   2022-07-07               113      28.04              10.67
-69   2022-07-06               772      59.74              25.60
-70   2022-07-07               313      60.38              17.57
-71   2022-07-13             2,079      31.09              15.54
-72   2022-07-13               448      74.37              24.38
-73   2022-07-06               326      60.96              26.21
-74   2022-07-27               250      27.43               6.10
-75   2022-07-28                60      90.22              26.82
-76   2022-07-28               515      51.82              29.87
-77   2022-08-15                69      49.68              27.43
-78   2022-08-16                77      73.15              29.57
-79   2022-09-01               141      36.58              16.76
-80   2022-09-01               205      59.13              18.29
-81   2022-09-28               200      35.36              16.46
-82   2022-09-29               206      87.78              16.46
-83   2022-09-29               649      66.14              21.34
-84   2022-10-06               290      25.91               9.14
-85   2022-10-06               629      26.21               7.92
-86   2022-09-28               820      51.21              13.72
-87   2022-10-14               499      55.17              15.85
-88   2022-10-13               423      39.62              27.43
-89   2022-10-14               333      91.44              12.50
-90   2022-10-13               512      41.15              28.35
-91   2022-12-03               220      68.88              29.26
-92   2022-11-30               123      57.30              28.35
-93   2022-11-30               313      43.59               7.01
-94   2022-12-23               420      68.28              18.29
-95   2022-12-21               397      45.11              16.46
-96   2022-12-30               142      61.87              15.24
-97   2022-12-30               533      39.62              18.29
-98   2022-12-21               551      51.82              30.18
-99   2022-12-31               419      43.89              14.94
-100  2023-01-19               931      46.33              19.81
-101  2023-02-01               300      54.56              29.26
-102  2023-02-01               123      69.80              24.38
-103  2023-02-01               220      79.86              14.94
-104  2023-02-01                81      60.26              15.36
-105  2023-02-27               307      66.14              29.57
-106  2023-02-24               102      36.58              15.85
-107  2023-02-24               503      65.23              23.47
-108  2023-02-23               380      35.66              17.68
-109  2023-03-17               450      46.02              20.73
-110  2023-03-18               150      64.01              10.36
-111  2023-03-18               332      45.72              17.37
-112  2023-03-18               665      28.96              15.24
-113  2023-03-15             2,578      37.19              23.47
-114  2023-04-05               150      67.97              17.98
-115  2023-04-05               160      24.99               7.01
-116  2023-03-18               354      43.89              10.06
-117  2023-04-07               246      68.58              12.80
-118  2023-04-06               509      41.45              20.73
-119  2023-02-01               380      74.71              16.67
-120  2023-04-06             4,384      31.09              19.81
-121  2023-05-05               378      65.53              40.54
-122  2023-03-17               180      38.40              17.37
-123  2023-04-07               107      16.15               0.00
-124  2023-05-26               802      37.49              19.51
-125  2023-05-27               150      42.37               0.00
-126  2023-05-27               171      74.07              29.57
-127  2023-05-27               310      57.91              14.33
-128  2023-05-26             2,172      47.85              19.81
-129  2023-06-03               285      64.01              29.26
-130  2023-06-03               640         NA                 NA
-131  2023-06-02               336      39.62              21.03
-132  2023-06-08               166      28.65                 NA
-133  2023-06-09               781       0.00               0.00
-134  2023-07-13               166      64.01              14.02
-135  2023-06-02               738      40.23              13.72
-136  2023-07-15               773      45.72              12.19
-137  2023-07-14               390      69.88              24.38
-138  2023-07-14                 0      70.10              30.48
-139  2023-07-14               479      21.34               6.10
-140  2023-08-11             2,815      64.01              25.91
-141  2023-08-11               538      33.53              17.98
-142  2023-08-27                86      76.20              30.48
-143  2023-08-26               141      57.91              24.38
-144  2023-09-15               448      39.62              14.94
-145  2023-08-12                64      42.67              18.29
-146  2023-11-06             5,009      60.26              19.29
-147  2023-11-25                 0      69.68                 NA
-148  2022-09-30               422      53.64              21.34
-149  2021-12-15               608      30.48              64.01
-150  2021-12-15               454      48.16              22.25
-151  2021-12-15               292      43.28              31.70
-152  2021-12-30             2,880      65.84              23.47
-153  2021-12-31             1,224      85.34              28.04
-154  2021-12-23             3,483      49.68              25.91
-155  2021-12-18             1,240      43.59              17.07
-156  2021-12-18               981      48.16              22.25
-157  2021-12-16               916      64.01              30.48
-158  2021-12-15               259      47.55              13.11
-159  2021-12-15               267      53.34              20.73
-160  2022-06-23             2,218      57.91              39.62
-161  2022-07-05             1,795      57.91              24.08
-162  2022-07-08             1,133      86.87              22.86
-163  2022-08-12               652      65.53              20.12
-164  2022-08-12             1,378      29.57              18.29
-165  2023-05-08               555      60.66              22.56
-166  2023-06-27               632      74.68              15.24
-167  2023-06-27             1,175      89.92              33.53
-168  2023-06-27               609      60.96               9.14
-169  2023-07-13               523      40.23              21.64
-170  2023-07-25               883      95.50              24.00
-171  2023-11-08               988      77.42              21.34
-172  2022-01-26               189      84.73              23.77
-173  2023-08-09               487      32.92                 NA
-    pump_installation_depth well_yield_.m.3.hr.
-1                     51.00                0.04
-2                     53.61                0.12
-3                     27.00                0.54
-4                     67.00                0.03
-5                     41.47                0.03
-6                     41.70                0.12
-7                     60.60                6.24
-8                     30.30                5.16
-9                     33.30                8.34
-10                    39.39                6.42
-11                    27.40                4.68
-12                    60.60                1.86
-13                    29.00                4.50
-14                    45.00                2.58
-15                    24.20                8.40
-16                    30.30               13.86
-17                    33.53                6.00
-18                    27.43                6.00
-19                    21.34                6.00
-20                    36.58                4.50
-21                     3.05                0.42
-22                    21.34                5.16
-23                    24.38                6.00
-24                    36.58                9.00
-25                    36.58                9.00
-26                    33.53                6.00
-27                    27.43                3.60
-28                    60.96                1.80
-29                     5.49                3.60
-30                    54.86                3.72
-31                    54.86                4.14
-32                    30.48                9.72
-33                    21.34                3.78
-34                    60.00               12.00
-35                    36.58                6.00
-36                    36.58                9.00
-37                    54.86                  NA
-38                    36.58                7.20
-39                    48.77                9.00
-40                    42.67                7.20
-41                    54.80                  NA
-42                    39.62                9.00
-43                   120.00               12.00
-44                    45.20               36.00
-45                    39.60                5.16
-46                    33.53                4.62
-47                    51.82               52.56
-48                    48.77               52.50
-49                    33.53                4.80
-50                    33.53               12.00
-51                    30.48                0.84
-52                    30.48               26.04
-53                    42.67                0.66
-54                    39.62               33.90
-55                    33.53                3.60
-56                    39.62                5.52
-57                    18.00                  NA
-58                    33.53                7.20
-59                    24.38               10.92
-60                    36.58               10.92
-61                    30.48                6.78
-62                    27.43               10.02
-63                    36.58               10.02
-64                    33.53               10.02
-65                    36.58                8.40
-66                    33.53               12.00
-67                    24.30               12.00
-68                    18.29               10.92
-69                    36.58                0.00
-70                   100.00               86.52
-71                    27.43                6.78
-72                    54.86                7.80
-73                    54.86                7.80
-74                    21.34                0.00
-75                    54.86                0.00
-76                    42.67                0.00
-77                    36.58                0.00
-78                    51.82                0.00
-79                    24.38                0.00
-80                    30.48                0.00
-81                    24.38                0.00
-82                    33.53                0.00
-83                    33.53                0.00
-84                    21.34               12.00
-85                    18.29                0.20
-86                    39.62                  NA
-87                    27.43               10.02
-88                    30.48                9.24
-89                    39.62               10.92
-90                    30.48               10.92
-91                    42.67               10.02
-92                    42.67                8.40
-93                    24.38               10.02
-94                    45.72                8.40
-95                    24.38               10.92
-96                    42.67                8.40
-97                     3.35                8.40
-98                    45.72                9.24
-99                    27.43               10.92
-100                   33.53               13.86
-101                   33.53              496.20
-102                   45.72               55.80
-103                   24.38               78.00
-104                   45.72               67.20
-105                    5.18               12.00
-106                   27.43               12.00
-107                   36.58               12.00
-108                   27.43                  NA
-109                   33.53               15.66
-110                   27.43               13.86
-111                   30.48               10.92
-112                   24.38                8.40
-113                   36.58                5.70
-114                   30.48               10.02
-115                   18.29               10.92
-116                   24.38               10.02
-117                   30.48               10.92
-118                   30.48                7.80
-119                   24.38              180.00
-120                   27.43                7.80
-121                   54.86                4.14
-122                   33.53               13.86
-123                   15.24                0.00
-124                   30.48               10.92
-125                   39.62                0.00
-126                   39.62               10.92
-127                   30.48               12.00
-128                   33.53                9.24
-129                   39.62               12.00
-130                      NA                0.48
-131                   27.43               10.92
-132                   27.43                  NA
-133                   21.34                0.00
-134                   30.48               15.66
-135                   24.38               12.00
-136                   39.62                5.70
-137                   45.72                  NA
-138                   48.77                  NA
-139                   21.34                0.00
-140                   33.53                8.40
-141                   27.43                8.40
-142                   42.67                9.24
-143                   39.62               12.00
-144                   30.48                9.24
-145                   30.48               10.92
-146                   30.48               18.00
-147                      NA                  NA
-148                   33.53                0.00
-149                   39.62                  NA
-150                   42.67                  NA
-151                   39.62                  NA
-152                   39.62                5.70
-153                   48.77                4.68
-154                   45.72                0.66
-155                   33.53                0.60
-156                   48.16                0.78
-157                   39.62                0.60
-158                   27.43                0.42
-159                   36.58                0.60
-160                   51.82                6.42
-161                   39.62               10.92
-162                   57.91                6.42
-163                   30.48                0.00
-164                   27.43                0.00
-165                   42.67                  NA
-166                   33.53                0.90
-167                   51.82                0.90
-168                   36.58                0.78
-169                   36.58                9.24
-170                   71.50                2.00
-171                   39.62                9.24
-172                   54.86                6.78
-173                      NA                  NA</code></pre>
-</div>
-</div>
-</section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
-</section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.3     ✔ readr     2.1.4
@@ -663,532 +148,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/borehole_repair_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>borehole <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/borehole_repair_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 173 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (4): community, parish, sub_county, source_id
+dbl  (4): well_depth, static_water_depth, pump_installation_depth, well_yiel...
+num  (1): population_served
+date (1): repair_date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+</section>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                    community           parish             sub_county source_id
-1                     Kiduula        KABUNYATA                 Kamira       850
-2                     Wantula         SEKAMULI             Bamunanika       846
-3                   Kikondere       KYAWANGABI            Butuntumula       953
-4                  Nakabululu          BUBUUBI                Zirobwe       848
-5                      Lukowe          KIBENGO                Kikyusa       849
-6                    Mpangati           BUKIMU                Zirobwe       847
-7                     Mpeeka             KASWA                 Kamira      1018
-8               Kirimantungo             MAZZI                 Kamira      1022
-9                   Nanteeko          NAMBEERE                 Kamira      1024
-10                     Kamira            KASWA                 Kamira      1020
-11                   Butto A          KYAMPISI             Bamunanika      1025
-12                      Keera          KATAGWE                 Kamira      1019
-13                 Bakatadde          NAMBEERE                 Kamira      1023
-14                 Kyajjagali           MABUYE                 Kamira      1021
-15                  Ssekamuli         SEKAMULI             Bamunanika      1027
-16                      Ggavu         KIBIRIZI             Bamunanika      1026
-17                 Wabitunda           KIBANYI             Bamunanika       720
-18                   Kibanyi           KIBANYI             Bamunanika       721
-19                   Kibanyi           KIBANYI             Bamunanika       724
-20                   Kanjuki           KIBANYI             Bamunanika       723
-21                    Kkalwe           KIBANYI             Bamunanika       725
-22                     Kkalwe          KIBANYI             Bamunanika       726
-23               Galikwoleka          NAMBEERE                 Kamira       722
-24          Mazzi Nakyefumula            MAZZI                 Kamira       729
-25             Mazzi Wambiito            MAZZI                 Kamira      1028
-26             Mazzi Wambiito            MAZZI                 Kamira      1031
-27            Kakira-Kibanga             MAZZI                 Kamira      1030
-28              Kyampologoma            MABUYE                 Kamira      1029
-29               Namatogonya           KYETUME                Zirobwe      1032
-30               Makonkonyigo          KATAGWE                 Kamira      1034
-31              Makonkonyigo           KATAGWE                 Kamira      1033
-32                Kyampogola      KYAMPOLOGOMA                Kikyusa      1036
-33                  Kankoole          WABUSANA                Kikyusa      1037
-34                  Wabusana          WABUSANA                Kikyusa       851
-35                   Kikabya          KYAMPISI             Bamunanika       773
-36                    Kiyunga        MPOLOGOMA             Bamunanika      1038
-37                  Kyampisi            KIKUBE                 Luwero      1041
-38                    Nkuluze         KIBIRIZI             Bamunanika       540
-39  Kiwangaza Zone, Kyampisi            KIKUBE                 Luwero      1039
-40                  Kyampisi            KIKUBE                 Luwero      1040
-41                  Kyampisi            KIKUBE                 Luwero      1041
-42                  Bwetyaba         WALULEETA             Makulubita      1103
-43              Kabengeredwa            KASOZI             Makulubita       676
-44                    Maggwa            KASOZI             Makulubita       675
-45                   Lubwama            KASOZI             Makulubita      1104
-46                 Nkokonjeru       NKOKONJERU               Bombo Tc       684
-47                   Masinga      KYAMPOLOGOMA                Kikyusa      1123
-48                    Namyeso           KAGOGO             Makulubita      1122
-49                   Lukyaamu       BUKAMBAGGA                 Luwero      1125
-50                  Kanyogoga           KIKUBE                 Luwero      1128
-51                       Mawu            NSAVU             Makulubita      1124
-52                  Kabakedi          KABAKEDI                 Luwero      1042
-53  Kiwangaza Zone, Kyampisi            KIKUBE                 Luwero      1105
-54                   Kamwano           KYETUME                Zirobwe      1102
-55                   Kakuuto       BAMUGOLODDE            Butuntumula      1127
-56                   Lukyaamu       BUKAMBAGGA                 Luwero      1126
-57                 Tebalyala           BWEYEYO                 Luwero       943
-58             Kito-Kanyanda          KANYANDA             Makulubita      1121
-59            Mulama Kitebere         KANYANDA             Makulubita      1106
-60                    Kyondo        KYAWANGABI            Butuntumula      1132
-61                 Bakatadde          NAMBEERE                 Kamira      1130
-62                     Mabuye           MABUYE                 Kamira      1131
-63                     Kawula           KIKUBE                 Luwero      1149
-64                   Nambeere         NAMBEERE                 Kamira      1107
-65                  Bukekete            KASOZI             Makulubita      1154
-66                Kyamuwooya            KASOZI             Makulubita      1153
-67               Namatogonya          KAKABALA            Butuntumula      1129
-68                 Tebalyala           BWEYEYO                 Luwero      1155
-69              Kyampologoma            MABUYE                 Kamira       886
-70                    Bweyeyo          BWEYEYO                 Luwero      1133
-71          Katikamu Kasenene         KATIKAMU           Wobulenzi Tc      1160
-72                   Kangave           KANGAVE             Makulubita      1159
-73                   Kikandwa            KASWA                 Kamira      1157
-74                   Bukajja          LUNYOLYA               Kalagala      1156
-75                  Katabona           KIBENGO                Kikyusa      1161
-76                    Bukiibi          KATAGWE                 Kamira      1158
-77                     Bugabo           MABUYE                 Kamira      1184
-78                     Wesune            NSAVU             Makulubita      1185
-79                     Mugogo       MAKULUBITA             Makulubita      1187
-80                     Mugogo       MAKULUBITA             Makulubita      1186
-81                  Kalanamu          KALANAMU               Kalagala      1190
-82                   Busaakwa          KAYINDU               Kalagala      1192
-83            Degeya Central           DDEGEYA               Kalagala      1191
-84        Lutete - Bamunanika         KYAMPISI             Bamunanika      1188
-85               Namwatulira           DDEGEYA               Kalagala      1189
-86                  Kayindu A          KAYINDU               Kalagala      1193
-87               Makulubita A       MAKULUBITA             Makulubita      1195
-88         Namayamba - Luwero            NSAVU             Makulubita       713
-89                    Buligwe           KAGOGO             Makulubita      1196
-90         Namayamba - Luwero            NSAVU             Makulubita       714
-91                   Saagala            BUSOKE               Kalagala      1199
-92                    Nansaka       KYAWANGABI            Butuntumula      1197
-93                     Kiiya           NGOGOLO            Butuntumula      1198
-94                 Namalimba           KIBENGO                Kikyusa      1329
-95                       Bowa           KAGOGO             Makulubita      1200
-96                   Bugungu         WALULEETA             Makulubita      1330
-97                    Namyeso           KAGOGO             Makulubita      1331
-98                       Bowa           KAGOGO             Makulubita       771
-99                  Nakibengo         KALANAMU               Kalagala      1332
-100        Butanza Lwannyonyi       KYALUGONDO               Katikamu      1333
-101                Nakibengo          KALANAMU               Kalagala      1177
-102                   Lukiizi         KALWANGA            Butuntumula      1071
-103                  Kalungu          KALANAMU               Kalagala      1175
-104                 Nabitete           BUBUUBI                Zirobwe      1178
-105                 Bwetyaba         WALULEETA             Makulubita       708
-106                   Mugogo        MAKULUBITA             Makulubita      1306
-107        Butanza Lwannyonyi       KYALUGONDO               Katikamu      1307
-108                   Kisubi          LUNYOLYA               Kalagala      1305
-109         Kanyogoga-Kikyusa           KIZIBA                Kikyusa      1310
-110                Kanyike B           MIGADDE               Katikamu      1311
-111                    Kikoza       KYALUGONDO               Katikamu      1312
-112                    Timba        NGALONKALU                Zirobwe      1313
-113                  Lukomera          MIGADDE               Katikamu      1308
-114                     Ngabo       KYALUGONDO               Katikamu      1316
-115             Koojo-proper           MIGADDE               Katikamu      1314
-116          Bamugolodde LC1       BAMUGOLODDE            Butuntumula       834
-117                    Sempa          TWEYANZE               Katikamu      1317
-118                    Gwaffu          BUKOLWA           Wobulenzi Tc      1383
-119                 Kalanamu          KALANAMU               Kalagala      1176
-120                   Kigulu    WOBULENZI EAST           Wobulenzi Tc      1429
-121             Makonkonyigo           KATAGWE                 Kamira     1414a
-122         Kanyogoga-Kikyusa           KIZIBA                Kikyusa      1309
-123                     Ngabo       KYALUGONDO               Katikamu      1455
-124                    Kaswa           MUSAALE               Katikamu      1303
-125          Bamugolodde LC1       BAMUGOLODDE            Butuntumula      1454
-126                    Gulama           BUYUKI               Katikamu      1301
-127                    Gulama           BUYUKI               Katikamu      1300
-128                  Lukomera          MIGADDE               Katikamu      1302
-129                      Kawe     KYAMPOLOGOMA                Kikyusa       904
-130                  Kikunyu           KANGAVE             Makulubita     1476a
-131          Katikamu Proper           BUKOLWA           Wobulenzi Tc      1304
-132                 Kiduukulu       MAKULUBITA             Makulubita      1385
-133                  Busula B          MUSAALE               Katikamu      1384
-134    Bukusu-Makulubita 'B'        MAKULUBITA             Makulubita      1471
-135                    Kitto          TWEYANZE               Katikamu      1419
-136                    Timba        NGALONKALU                Zirobwe      1461
-137                  Masinga      KYAMPOLOGOMA                Kikyusa      1388
-138                     Kiiso        KABUNYATA                 Kamira      1389
-139                 Nsozibiri          KIGOMBE                 Luwero      1456
-140             Katikamu SDA          KATIKAMU           Wobulenzi Tc      1483
-141                  Mpumudde        WALULEETA             Makulubita      1485
-142                   Kyakula           MABUYE                 Kamira      1486
-143       Ntinda-Buligwe LC1            KAGOGO             Makulubita      1506
-144                    Mulira            NSAVU             Makulubita       795
-145                    Lukira       KYALUGONDO               Katikamu      1484
-146         Kasoma Zone (LC1) LUWERO WEST WARD              Luwero Tc      1490
-147                Kkungu LC1           KIKOMA               Katikamu     1477b
-148                 Semyungu           MPWEDDE             Kasangombe      1194
-149                   Kasozi              LUGO               Busukuma       989
-150       Kiwenda - Nazaleesi          KIWENDA               Busukuma       991
-151                  Kabumba           KABUMBA               Busukuma       988
-152                     Nsasa             KIRA                   Kira       727
-153                 Namulonge           KIKOKO               Busukuma       728
-154                   Bulindo             KIRA                   Kira       990
-155                 Nabitalo           KIWENDA               Busukuma       996
-156                 Nabitalo           KIWENDA               Busukuma       992
-157                   Kabonge        WAMIRONGO               Busukuma       993
-158          Menvu 2 Luteete              LUGO               Busukuma       995
-159             Menvu-Luteete             LUGO               Busukuma       994
-160                   Kiti A           WATTUBA Kasangati Town Council      1135
-161                 Kitukutwe         KIMWANYI                   Kira      1165
-162                    Nasse             NASSE                  Gombe       427
-163                    Kamuli           KAMULI                 Kakiri      1167
-164                   Bukemba          MAGIGYE               Busukuma       537
-165                 Ngongolo          NGONGOLO  Kajjansi Town Council     1413a
-166                    Luguzi           LUGUZI Namayumba Town Council      1450
-167               Gala Nalya          NAMPUNGE                 Kakiri      1432
-168                   Busonko          MAGOGGO                 Kakiri      1451
-169                   Busonko          MAGOGGO                 Kakiri      1467
-170       Sentema - Kimbejja          SSENTEMA                 Kakiri     1433a
-171                   Busujja     BUSUJJA WARD    Kakiri Town Council      1514
-172                                                                        1035
-173                                                                        1140
-    repair_date population_served well_depth static_water_depth
-1    2021-10-28               120     139.23              17.50
-2    2021-10-28               132      54.96              31.90
-3    2021-10-28               123      79.50              16.74
-4    2021-10-28                68      82.70              26.48
-5    2021-10-28                90     121.23              24.70
-6    2021-10-28               149      42.80              17.07
-7    2021-11-25               103      86.40              33.60
-8    2021-11-28                34      45.40              11.50
-9    2021-11-29                69      63.60              23.60
-10   2021-11-27                17      56.00              26.06
-11   2021-11-30               119      45.10              16.10
-12   2021-11-27               103      88.70              32.00
-13   2021-11-28               309      46.00              18.00
-14   2021-11-29               172      63.60              30.30
-15   2021-12-03               278      33.30               6.40
-16   2021-12-03               304      67.90              18.20
-17   2021-12-15               396      82.30              20.12
-18   2021-12-15               819      34.75              23.77
-19   2021-12-23                93      42.06              14.63
-20   2021-12-23               383      42.06              22.56
-21   2021-12-29               159      48.77              18.29
-22   2021-12-30                66      67.97               9.14
-23   2021-12-31               343      37.49              12.19
-24   2022-01-01               618      58.52              24.08
-25   2022-01-13               137      58.83              22.25
-26   2022-01-15               584      46.63              16.15
-27   2022-01-14               137      34.75              10.67
-28   2022-01-14               841      86.87              35.05
-29   2022-01-15               136      83.82              32.00
-30   2022-01-26               120      70.10              37.19
-31   2022-01-25               378      65.53              40.54
-32   2022-01-27               825      53.64              10.67
-33   2022-01-27               435      24.38              17.07
-34   2022-01-27                60     118.20              30.40
-35   2022-02-02               198      48.77              15.85
-36   2022-02-01               106      57.30              12.19
-37   2022-02-04               163      63.40              35.36
-38   2022-02-02               238      64.01              21.95
-39   2022-02-03                63      67.06              36.58
-40   2022-02-08               150      61.57              29.26
-41   2022-02-03               163      35.30              63.00
-42   2022-03-15                90      50.29              22.86
-43   2022-03-15               166      82.20              18.20
-44   2022-03-15               193      48.70              18.20
-45   2022-03-15                77      82.20              15.20
-46   2022-03-24             4,444      53.34              21.95
-47   2022-04-06               210      58.52              42.37
-48   2022-04-07               211      63.40              16.76
-49   2022-04-22               163      67.06              33.53
-50   2022-04-21               213      56.39              16.76
-51   2022-04-08               359      39.62              13.72
-52   2022-03-03               376      80.77              19.81
-53   2022-04-06                13      74.68              34.14
-54   2022-03-03               190      45.72              20.73
-55   2022-04-22             1,021      67.06              13.72
-56   2022-04-22               213      53.34              21.34
-57   2022-03-21               225      50.03              12.37
-58   2022-04-07             1,063      53.34              16.76
-59   2022-05-21               141      51.82               9.75
-60   2022-05-20               191      55.47              19.81
-61   2022-05-18               275      57.91              17.07
-62   2022-05-19               292      32.92              12.50
-63   2022-06-22                75      62.18              24.99
-64   2022-06-22               137      64.01              15.24
-65   2022-06-30               141      60.96              23.47
-66   2022-06-30               205      72.24              17.98
-67   2022-05-05               204      55.40              16.10
-68   2022-07-07               113      28.04              10.67
-69   2022-07-06               772      59.74              25.60
-70   2022-07-07               313      60.38              17.57
-71   2022-07-13             2,079      31.09              15.54
-72   2022-07-13               448      74.37              24.38
-73   2022-07-06               326      60.96              26.21
-74   2022-07-27               250      27.43               6.10
-75   2022-07-28                60      90.22              26.82
-76   2022-07-28               515      51.82              29.87
-77   2022-08-15                69      49.68              27.43
-78   2022-08-16                77      73.15              29.57
-79   2022-09-01               141      36.58              16.76
-80   2022-09-01               205      59.13              18.29
-81   2022-09-28               200      35.36              16.46
-82   2022-09-29               206      87.78              16.46
-83   2022-09-29               649      66.14              21.34
-84   2022-10-06               290      25.91               9.14
-85   2022-10-06               629      26.21               7.92
-86   2022-09-28               820      51.21              13.72
-87   2022-10-14               499      55.17              15.85
-88   2022-10-13               423      39.62              27.43
-89   2022-10-14               333      91.44              12.50
-90   2022-10-13               512      41.15              28.35
-91   2022-12-03               220      68.88              29.26
-92   2022-11-30               123      57.30              28.35
-93   2022-11-30               313      43.59               7.01
-94   2022-12-23               420      68.28              18.29
-95   2022-12-21               397      45.11              16.46
-96   2022-12-30               142      61.87              15.24
-97   2022-12-30               533      39.62              18.29
-98   2022-12-21               551      51.82              30.18
-99   2022-12-31               419      43.89              14.94
-100  2023-01-19               931      46.33              19.81
-101  2023-02-01               300      54.56              29.26
-102  2023-02-01               123      69.80              24.38
-103  2023-02-01               220      79.86              14.94
-104  2023-02-01                81      60.26              15.36
-105  2023-02-27               307      66.14              29.57
-106  2023-02-24               102      36.58              15.85
-107  2023-02-24               503      65.23              23.47
-108  2023-02-23               380      35.66              17.68
-109  2023-03-17               450      46.02              20.73
-110  2023-03-18               150      64.01              10.36
-111  2023-03-18               332      45.72              17.37
-112  2023-03-18               665      28.96              15.24
-113  2023-03-15             2,578      37.19              23.47
-114  2023-04-05               150      67.97              17.98
-115  2023-04-05               160      24.99               7.01
-116  2023-03-18               354      43.89              10.06
-117  2023-04-07               246      68.58              12.80
-118  2023-04-06               509      41.45              20.73
-119  2023-02-01               380      74.71              16.67
-120  2023-04-06             4,384      31.09              19.81
-121  2023-05-05               378      65.53              40.54
-122  2023-03-17               180      38.40              17.37
-123  2023-04-07               107      16.15               0.00
-124  2023-05-26               802      37.49              19.51
-125  2023-05-27               150      42.37               0.00
-126  2023-05-27               171      74.07              29.57
-127  2023-05-27               310      57.91              14.33
-128  2023-05-26             2,172      47.85              19.81
-129  2023-06-03               285      64.01              29.26
-130  2023-06-03               640         NA                 NA
-131  2023-06-02               336      39.62              21.03
-132  2023-06-08               166      28.65                 NA
-133  2023-06-09               781       0.00               0.00
-134  2023-07-13               166      64.01              14.02
-135  2023-06-02               738      40.23              13.72
-136  2023-07-15               773      45.72              12.19
-137  2023-07-14               390      69.88              24.38
-138  2023-07-14                 0      70.10              30.48
-139  2023-07-14               479      21.34               6.10
-140  2023-08-11             2,815      64.01              25.91
-141  2023-08-11               538      33.53              17.98
-142  2023-08-27                86      76.20              30.48
-143  2023-08-26               141      57.91              24.38
-144  2023-09-15               448      39.62              14.94
-145  2023-08-12                64      42.67              18.29
-146  2023-11-06             5,009      60.26              19.29
-147  2023-11-25                 0      69.68                 NA
-148  2022-09-30               422      53.64              21.34
-149  2021-12-15               608      30.48              64.01
-150  2021-12-15               454      48.16              22.25
-151  2021-12-15               292      43.28              31.70
-152  2021-12-30             2,880      65.84              23.47
-153  2021-12-31             1,224      85.34              28.04
-154  2021-12-23             3,483      49.68              25.91
-155  2021-12-18             1,240      43.59              17.07
-156  2021-12-18               981      48.16              22.25
-157  2021-12-16               916      64.01              30.48
-158  2021-12-15               259      47.55              13.11
-159  2021-12-15               267      53.34              20.73
-160  2022-06-23             2,218      57.91              39.62
-161  2022-07-05             1,795      57.91              24.08
-162  2022-07-08             1,133      86.87              22.86
-163  2022-08-12               652      65.53              20.12
-164  2022-08-12             1,378      29.57              18.29
-165  2023-05-08               555      60.66              22.56
-166  2023-06-27               632      74.68              15.24
-167  2023-06-27             1,175      89.92              33.53
-168  2023-06-27               609      60.96               9.14
-169  2023-07-13               523      40.23              21.64
-170  2023-07-25               883      95.50              24.00
-171  2023-11-08               988      77.42              21.34
-172  2022-01-26               189      84.73              23.77
-173  2023-08-09               487      32.92                 NA
-    pump_installation_depth well_yield_.m.3.hr.
-1                     51.00                0.04
-2                     53.61                0.12
-3                     27.00                0.54
-4                     67.00                0.03
-5                     41.47                0.03
-6                     41.70                0.12
-7                     60.60                6.24
-8                     30.30                5.16
-9                     33.30                8.34
-10                    39.39                6.42
-11                    27.40                4.68
-12                    60.60                1.86
-13                    29.00                4.50
-14                    45.00                2.58
-15                    24.20                8.40
-16                    30.30               13.86
-17                    33.53                6.00
-18                    27.43                6.00
-19                    21.34                6.00
-20                    36.58                4.50
-21                     3.05                0.42
-22                    21.34                5.16
-23                    24.38                6.00
-24                    36.58                9.00
-25                    36.58                9.00
-26                    33.53                6.00
-27                    27.43                3.60
-28                    60.96                1.80
-29                     5.49                3.60
-30                    54.86                3.72
-31                    54.86                4.14
-32                    30.48                9.72
-33                    21.34                3.78
-34                    60.00               12.00
-35                    36.58                6.00
-36                    36.58                9.00
-37                    54.86                  NA
-38                    36.58                7.20
-39                    48.77                9.00
-40                    42.67                7.20
-41                    54.80                  NA
-42                    39.62                9.00
-43                   120.00               12.00
-44                    45.20               36.00
-45                    39.60                5.16
-46                    33.53                4.62
-47                    51.82               52.56
-48                    48.77               52.50
-49                    33.53                4.80
-50                    33.53               12.00
-51                    30.48                0.84
-52                    30.48               26.04
-53                    42.67                0.66
-54                    39.62               33.90
-55                    33.53                3.60
-56                    39.62                5.52
-57                    18.00                  NA
-58                    33.53                7.20
-59                    24.38               10.92
-60                    36.58               10.92
-61                    30.48                6.78
-62                    27.43               10.02
-63                    36.58               10.02
-64                    33.53               10.02
-65                    36.58                8.40
-66                    33.53               12.00
-67                    24.30               12.00
-68                    18.29               10.92
-69                    36.58                0.00
-70                   100.00               86.52
-71                    27.43                6.78
-72                    54.86                7.80
-73                    54.86                7.80
-74                    21.34                0.00
-75                    54.86                0.00
-76                    42.67                0.00
-77                    36.58                0.00
-78                    51.82                0.00
-79                    24.38                0.00
-80                    30.48                0.00
-81                    24.38                0.00
-82                    33.53                0.00
-83                    33.53                0.00
-84                    21.34               12.00
-85                    18.29                0.20
-86                    39.62                  NA
-87                    27.43               10.02
-88                    30.48                9.24
-89                    39.62               10.92
-90                    30.48               10.92
-91                    42.67               10.02
-92                    42.67                8.40
-93                    24.38               10.02
-94                    45.72                8.40
-95                    24.38               10.92
-96                    42.67                8.40
-97                     3.35                8.40
-98                    45.72                9.24
-99                    27.43               10.92
-100                   33.53               13.86
-101                   33.53              496.20
-102                   45.72               55.80
-103                   24.38               78.00
-104                   45.72               67.20
-105                    5.18               12.00
-106                   27.43               12.00
-107                   36.58               12.00
-108                   27.43                  NA
-109                   33.53               15.66
-110                   27.43               13.86
-111                   30.48               10.92
-112                   24.38                8.40
-113                   36.58                5.70
-114                   30.48               10.02
-115                   18.29               10.92
-116                   24.38               10.02
-117                   30.48               10.92
-118                   30.48                7.80
-119                   24.38              180.00
-120                   27.43                7.80
-121                   54.86                4.14
-122                   33.53               13.86
-123                   15.24                0.00
-124                   30.48               10.92
-125                   39.62                0.00
-126                   39.62               10.92
-127                   30.48               12.00
-128                   33.53                9.24
-129                   39.62               12.00
-130                      NA                0.48
-131                   27.43               10.92
-132                   27.43                  NA
-133                   21.34                0.00
-134                   30.48               15.66
-135                   24.38               12.00
-136                   39.62                5.70
-137                   45.72                  NA
-138                   48.77                  NA
-139                   21.34                0.00
-140                   33.53                8.40
-141                   27.43                8.40
-142                   42.67                9.24
-143                   39.62               12.00
-144                   30.48                9.24
-145                   30.48               10.92
-146                   30.48               18.00
-147                      NA                  NA
-148                   33.53                0.00
-149                   39.62                  NA
-150                   42.67                  NA
-151                   39.62                  NA
-152                   39.62                5.70
-153                   48.77                4.68
-154                   45.72                0.66
-155                   33.53                0.60
-156                   48.16                0.78
-157                   39.62                0.60
-158                   27.43                0.42
-159                   36.58                0.60
-160                   51.82                6.42
-161                   39.62               10.92
-162                   57.91                6.42
-163                   30.48                0.00
-164                   27.43                0.00
-165                   42.67                  NA
-166                   33.53                0.90
-167                   51.82                0.90
-168                   36.58                0.78
-169                   36.58                9.24
-170                   71.50                2.00
-171                   39.62                9.24
-172                   54.86                6.78
-173                      NA                  NA</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+</section>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>```</p>
 </section>
 
 </main>

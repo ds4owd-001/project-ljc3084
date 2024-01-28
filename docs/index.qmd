@@ -1,15 +1,24 @@
 ---
-title: "Borehole data analysis for clean water access"
+title: "Borehole Data Analysis for Clean Water Access"
+author: "Joseph Lwere"
+date: 13-February-2024
+toc: true
 format: html
 editor: visual
 ---
 
+# Introduction
+
 ## Project Description:-
 
-1.  The objective of this project will be analysing and interpreting the raw borehole repair data to improve decision making.
+1.  The objective of this project will be analyzing and interpreting the raw borehole repair data to improve decision making.
 
 ```{r}
-read.csv(here::here("data/raw/borehole_repair_data.csv"))
+library(tidyverse)
+```
+
+```{r}
+borehole <- read_csv(here::here("data/raw/borehole_repair_data.csv"))
 ```
 
 ## Quarto
@@ -33,30 +42,13 @@ You can add options to executable code like this
 
 The `echo: false` option disables the printing of code (only output is displayed).
 
-```{r}
-library(tidyverse)
-```
 
-```{r}
-read.csv(here::here("data/raw/borehole_repair_data.csv"))
-```
+# Methods
 
-```{r}
-read.csv(here::here("data/processed/processed_borehole_data.csv"))
-```
+# Results
 
-```{r}
-setwd("data/processed")
-```
+# Conclusions
 
+# References
 
-```{r}
-processed_clean_data <- read_csv("data/processed/processed_borehole_data.csv")
-```
-
-```{r}
-library(tidyr)
-my_data_clean <- my_data %>% drop_na()
-```
-
-
+\`\`\`
