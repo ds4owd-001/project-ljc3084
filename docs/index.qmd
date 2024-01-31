@@ -3,6 +3,7 @@ title: "Borehole Data Analysis for Clean Water Access"
 author: "Joseph Lwere"
 date: 13-February-2024
 toc: true
+warning: false
 format: html
 editor: visual
 ---
@@ -52,6 +53,10 @@ write.csv(here::here("data/raw/processed_borehole_data.csv"))
 ```
 
 ```{r}
+#| label: Histogram showing distribution of well yield
+
+hist(processed_borehole_data$well_depth, col = "magenta", main = "Histogram of Well Depth", xlab = "Borehole depth")
+hist(processed_borehole_data$static_water_depth, col = "cyan", main = "Histogram of Static Water Depth", xlab = "Static Water Depth", add = TRUE)
 
 ```
 
