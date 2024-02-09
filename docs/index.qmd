@@ -15,48 +15,90 @@ editor: visual
 1.  The objective of this project will be analyzing and interpreting the raw borehole repair data to improve decision making.
 
 ```{r}
+library(DataCombine)
 library(tidyverse)
 library(tidyr)
+library(ggplot2)
+library(ggthemes)
+library(lubridate)
+library(readr)
+library(readxl)
+library(dplyr)
 ```
 
 ```{r}
 borehole <- read_csv(here::here("data/raw/borehole_repair_data.csv"))
 ```
 
-```{r}
-glimpse(borehole)
+```         
 ```
 
 ```{r}
+#| label: Data Transformation
 new_well_yield <- borehole |> 
    rename("well_yield" = "well_yield_(m^3/hr)")
+ processed_borehole_data <- drop_na(new_well_yield)
+
 ```
 
-```{r}
-glimpse(new_well_yield)
-
-new_well_yield |> 
-  filter(is.na(community))
-```
-
-```{r}
-processed_borehole_data <- new_well_yield |>  drop_na()
+```         
 ```
 
 ```{r}
 glimpse(processed_borehole_data)
-```
-
-```{r}
-write.csv(here::here("data/raw/processed_borehole_data.csv"))
 
 ```
 
 ```{r}
-#| label: Histogram showing distribution of well yield
+write_csv(processed_borehole_data, here::here("data/processed/processed_borehole_data.csv"))
+```
 
-hist(processed_borehole_data$well_depth, col = "magenta", main = "Histogram of Well Depth", xlab = "Borehole depth")
-hist(processed_borehole_data$static_water_depth, col = "cyan", main = "Histogram of Static Water Depth", xlab = "Static Water Depth", add = TRUE)
+```{r}
+
+
+```
+
+```{r}
+#| label: Histogram showing distribution of well_depth per sub county
+
+ggplot(data = processed_borehole_data,
+       mapping = aes(x = well_depth,
+                     fill = sub_county)) +
+  geom_histogram()+
+  xlab("Borehole Depth(m)")+
+  ylab("No. of Boreholes")
+
+```
+
+```{r}
+#| label: Chart showing distribution of well yield according to Population served
+
+ggplot(data = processed_borehole_data,
+       mapping = aes(x = population_served,
+                     y = well_yield))+
+  geom_point()+
+  lims(y = c(0,100))+
+  xlab("Populatin Served")+
+  ylab("Borehole Yield(m3)")
+ 
+```
+
+```{r}
+#| label: Column graph showing number of boreholes repaired by quarter of a year
+
+summary_data <- processed_borehole_data |>  
+  group_by(repair_date) |> 
+  summarise(count = n())
+
+ggplot(data = summary_data,
+       mapping = aes(x = quarter(repair_date),
+                     y = count,
+                     fill = year(repair_date))) +
+  geom_col()+
+  xlab("Repair date/ Quarter")+
+  ylab("No. of Boreholes")
+
+ 
 
 ```
 
