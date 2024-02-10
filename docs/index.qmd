@@ -23,14 +23,13 @@ library(ggthemes)
 library(lubridate)
 library(readr)
 library(readxl)
+library(gt)
 library(dplyr)
+library(knitr)
 ```
 
 ```{r}
 borehole <- read_csv(here::here("data/raw/borehole_repair_data.csv"))
-```
-
-```         
 ```
 
 ```{r}
@@ -41,50 +40,55 @@ new_well_yield <- borehole |>
 
 ```
 
-```         
-```
-
-```{r}
-glimpse(processed_borehole_data)
-
-```
-
 ```{r}
 write_csv(processed_borehole_data, here::here("data/processed/processed_borehole_data.csv"))
-```
-
-```{r}
-
 
 ```
 
 ```{r}
-#| label: Histogram showing distribution of well_depth per sub county
+district_column <- processed_borehole_data |> 
+mutate(district = case_when(
+  sub_county == "Gombe" ~ "Wakiso",
+  sub_county == "Kakiri" ~ "Wakiso",
+  sub_county == "Kakiri Town Council" ~ "Wakiso",
+  sub_county == "Namayumba Town Council" ~ "Wakiso",
+  sub_county == "Kira" ~ "Wakiso",
+  TRUE ~ "Luwero"
+  ))
 
-ggplot(data = processed_borehole_data,
+```
+
+```{r}
+#| label: Histogram showing distribution of well_depth per district
+#| fig-cap: Luwero and Wakiso District borehole depth
+ggplot(data = district_column,
        mapping = aes(x = well_depth,
-                     fill = sub_county)) +
+                     fill = district)) +
   geom_histogram()+
   xlab("Borehole Depth(m)")+
-  ylab("No. of Boreholes")
-
+  ylab("No. of Boreholes")+
+labs(title = "Borehole population served summary, data from two districts")
 ```
 
 ```{r}
 #| label: Chart showing distribution of well yield according to Population served
-
-ggplot(data = processed_borehole_data,
-       mapping = aes(x = population_served,
-                     y = well_yield))+
-  geom_point()+
-  lims(y = c(0,100))+
-  xlab("Populatin Served")+
-  ylab("Borehole Yield(m3)")
- 
+#| fig-cap: Luwero and Wakiso district borehole yield
+ggplot(data = district_column, 
+       mapping = aes(x = population_served, 
+                     y = well_yield, 
+                     fill = district, 
+                     color = district))+ 
+  geom_point()+ 
+  lims(y = c(0,100))+ 
+  xlab("Populatin Served")+ 
+  ylab("Borehole Yield(m3)")+
+labs(title = "Borehole well yield yield vs population served in two districts")
 ```
 
 ```{r}
+
 #| label: Column graph showing number of boreholes repaired by quarter of a year
+#| fig-cap: Borehole by quarter repaired
 
 summary_data <- processed_borehole_data |>  
   group_by(repair_date) |> 
@@ -96,14 +100,33 @@ ggplot(data = summary_data,
                      fill = year(repair_date))) +
   geom_col()+
   xlab("Repair date/ Quarter")+
-  ylab("No. of Boreholes")
-
- 
-
+  ylab("No. of Boreholes")+
+labs(title = "Borehole repaired by quarter of the year")
 ```
 
 ```{r}
+# table creation
+tbl_bhr_summary <- district_column |> 
+  group_by(district) |> 
+  summarise(
+    count = n(),
+    mean_popn = mean(population_served),
+    sd_popn = sd(population_served),
+    median_popn = median(population_served)
+  ) 
+# export table to processed folder 
+write_csv(tbl_bhr_summary, here::here("data/processed/tbl-01-bhr-summary.csv"))
 
+
+```
+
+@tbl_bhr_summary shows that Wakiso District has more people served by just 11 boreholes compared to Luwero District which has 136 boreholes.
+
+```{r}
+#| label: tbl_bhr_summary
+#| tbl-cap: "Borehole population served summary, data from two districts"
+# Using kable() to display the bhr-summary table
+kable(tbl_bhr_summary)
 ```
 
 ## Quarto
