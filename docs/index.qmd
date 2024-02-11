@@ -1,10 +1,14 @@
 ---
 title: "Borehole Data Analysis for Clean Water Access"
-author: "Joseph Lwere"
+author: 
+    name: "Joseph Lwere"
+    email: ljc3084@gmail.com
 date: 13-February-2024
 toc: true
 warning: false
 format: html
+code-fold: true
+bibliography: references.bib
 editor: visual
 ---
 
@@ -12,7 +16,7 @@ editor: visual
 
 ## Project Description:-
 
-1.  The objective of this project will be analyzing and interpreting the raw borehole repair data to improve decision making.
+The objective of this project will be analyzing and interpreting raw borehole repair data to aid planing and decision making. Boreholes are the main technology used to access ground water in Uganda according to [@owor2022permeability], it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at the future for borehole functionality in Uganda [@smith2023does], this project report offers more insights on the case.  
 
 ```{r}
 library(DataCombine)
@@ -28,9 +32,15 @@ library(dplyr)
 library(knitr)
 ```
 
+## Raw Data
+We start by reading the raw data from the .csv file
+
 ```{r}
 borehole <- read_csv(here::here("data/raw/borehole_repair_data.csv"))
 ```
+
+## Data Transformation
+Transforming the data into a readable variable name
 
 ```{r}
 #| label: Data Transformation
@@ -40,10 +50,15 @@ new_well_yield <- borehole |>
 
 ```
 
+## Processed Data
+Writing the processed data ready for analysis into the processed folder
+
 ```{r}
 write_csv(processed_borehole_data, here::here("data/processed/processed_borehole_data.csv"))
 
 ```
+
+Createing a new variable from the existing data
 
 ```{r}
 district_column <- processed_borehole_data |> 
@@ -57,10 +72,12 @@ mutate(district = case_when(
   ))
 
 ```
+## Distribution of well depth
+The histogram below showing the distribution of well depth across two districts.
 
 ```{r}
 #| label: Histogram showing distribution of well_depth per district
-#| fig-cap: Luwero and Wakiso District borehole depth
+
 ggplot(data = district_column,
        mapping = aes(x = well_depth,
                      fill = district)) +
@@ -69,10 +86,10 @@ ggplot(data = district_column,
   ylab("No. of Boreholes")+
 labs(title = "Borehole population served summary, data from two districts")
 ```
-
+## Well Yield and Population
+The scatterplot below showing well yield distribution and population served across the two districts.
 ```{r}
 #| label: Chart showing distribution of well yield according to Population served
-#| fig-cap: Luwero and Wakiso district borehole yield
 ggplot(data = district_column, 
        mapping = aes(x = population_served, 
                      y = well_yield, 
@@ -84,11 +101,13 @@ ggplot(data = district_column,
   ylab("Borehole Yield(m3)")+
 labs(title = "Borehole well yield yield vs population served in two districts")
 ```
+## Boreholes repaired by quarter
+The column chart below shows borehole numbers repaired by quarter and year.
 
 ```{r}
 
 #| label: Column graph showing number of boreholes repaired by quarter of a year
-#| fig-cap: Borehole by quarter repaired
+
 
 summary_data <- processed_borehole_data |>  
   group_by(repair_date) |> 
@@ -103,6 +122,7 @@ ggplot(data = summary_data,
   ylab("No. of Boreholes")+
 labs(title = "Borehole repaired by quarter of the year")
 ```
+
 
 ```{r}
 # table creation
@@ -122,12 +142,15 @@ write_csv(tbl_bhr_summary, here::here("data/processed/tbl-01-bhr-summary.csv"))
 
 @tbl_bhr_summary shows that Wakiso District has more people served by just 11 boreholes compared to Luwero District which has 136 boreholes.
 
+## Boreholes characteristics
+The table below shows borehole characteristics in the two districts of operation.
 ```{r}
 #| label: tbl_bhr_summary
-#| tbl-cap: "Borehole population served summary, data from two districts"
+#| tbl-cap: "Borehole population served summary data from two districts"
 # Using kable() to display the bhr-summary table
 kable(tbl_bhr_summary)
 ```
+
 
 ## Quarto
 

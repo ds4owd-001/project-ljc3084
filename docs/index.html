@@ -56,7 +56,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -83,7 +102,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#project-description-" id="toc-project-description-" class="nav-link" data-scroll-target="#project-description-">Project Description:-</a></li>
+  <li><a href="#project-description-" id="toc-project-description-" class="nav-link" data-scroll-target="#project-description-">Project Description:-</a>
+  <ul class="collapse">
+  <li><a href="#raw-data" id="toc-raw-data" class="nav-link" data-scroll-target="#raw-data">Raw Data</a></li>
+  </ul></li>
+  <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation">Data Transformation</a></li>
+  <li><a href="#processed-data" id="toc-processed-data" class="nav-link" data-scroll-target="#processed-data">Processed Data</a></li>
+  <li><a href="#distribution-of-well-depth" id="toc-distribution-of-well-depth" class="nav-link" data-scroll-target="#distribution-of-well-depth">Distribution of well depth</a></li>
+  <li><a href="#well-yield-and-population" id="toc-well-yield-and-population" class="nav-link" data-scroll-target="#well-yield-and-population">Well Yield and Population</a></li>
+  <li><a href="#boreholes-repaired-by-quarter" id="toc-boreholes-repaired-by-quarter" class="nav-link" data-scroll-target="#boreholes-repaired-by-quarter">Boreholes repaired by quarter</a></li>
+  <li><a href="#boreholes-characteristics" id="toc-boreholes-characteristics" class="nav-link" data-scroll-target="#boreholes-characteristics">Boreholes characteristics</a></li>
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
   <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
   </ul></li>
@@ -129,10 +157,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Introduction</h1>
 <section id="project-description-" class="level2">
 <h2 class="anchored" data-anchor-id="project-description-">Project Description:-</h2>
-<ol type="1">
-<li>The objective of this project will be analyzing and interpreting the raw borehole repair data to improve decision making.</li>
-</ol>
+<p>The objective of this project will be analyzing and interpreting raw borehole repair data to aid planing and decision making. Boreholes are the main technology used to access ground water in Uganda according to <span class="citation" data-cites="owor2022permeability">(<a href="#ref-owor2022permeability" role="doc-biblioref">Owor et al. 2022</a>)</span>, it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at the future for borehole functionality in Uganda <span class="citation" data-cites="smith2023does">(<a href="#ref-smith2023does" role="doc-biblioref">Smith, Ongom, and Davis 2023</a>)</span>, this project report offers more insights on the case.</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DataCombine)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -144,19 +172,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+<section id="raw-data" class="level3">
+<h3 class="anchored" data-anchor-id="raw-data">Raw Data</h3>
+<p>We start by reading the raw data from the .csv file</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>borehole <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raw/borehole_repair_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+</section>
+</section>
+<section id="data-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="data-transformation">Data Transformation</h2>
+<p>Transforming the data into a readable variable name</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>new_well_yield <span class="ot">&lt;-</span> borehole <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(<span class="st">"well_yield"</span> <span class="ot">=</span> <span class="st">"well_yield_(m^3/hr)"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> processed_borehole_data <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(new_well_yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+</section>
+<section id="processed-data" class="level2">
+<h2 class="anchored" data-anchor-id="processed-data">Processed Data</h2>
+<p>Writing the processed data ready for analysis into the processed folder</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(processed_borehole_data, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/processed/processed_borehole_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+<p>Createing a new variable from the existing data</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>district_column <span class="ot">&lt;-</span> processed_borehole_data <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">district =</span> <span class="fu">case_when</span>(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  sub_county <span class="sc">==</span> <span class="st">"Gombe"</span> <span class="sc">~</span> <span class="st">"Wakiso"</span>,</span>
@@ -166,8 +219,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  sub_county <span class="sc">==</span> <span class="st">"Kira"</span> <span class="sc">~</span> <span class="st">"Wakiso"</span>,</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Luwero"</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+</section>
+<section id="distribution-of-well-depth" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-well-depth">Distribution of well depth</h2>
+<p>The histogram below showing the distribution of well depth across two districts.</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> district_column,</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> well_depth,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fill =</span> district)) <span class="sc">+</span></span>
@@ -175,16 +235,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Borehole Depth(m)"</span>)<span class="sc">+</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"No. of Boreholes"</span>)<span class="sc">+</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Borehole population served summary, data from two districts"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/Histogram%20showing%20distribution%20of%20well_depth%20per%20district-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Luwero and Wakiso District borehole depth</figcaption>
-</figure>
+<p><img src="index_files/figure-html/Histogram%20showing%20distribution%20of%20well_depth%20per%20district-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</div>
+</section>
+<section id="well-yield-and-population" class="level2">
+<h2 class="anchored" data-anchor-id="well-yield-and-population">Well Yield and Population</h2>
+<p>The scatterplot below showing well yield distribution and population served across the two districts.</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> district_column, </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> population_served, </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> well_yield, </span>
@@ -195,18 +257,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Populatin Served"</span>)<span class="sc">+</span> </span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Borehole Yield(m3)"</span>)<span class="sc">+</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Borehole well yield yield vs population served in two districts"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/Chart%20showing%20distribution%20of%20well%20yield%20according%20to%20Population%20served-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Luwero and Wakiso district borehole yield</figcaption>
-</figure>
+<p><img src="index_files/figure-html/Chart%20showing%20distribution%20of%20well%20yield%20according%20to%20Population%20served-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</div>
+</section>
+<section id="boreholes-repaired-by-quarter" class="level2">
+<h2 class="anchored" data-anchor-id="boreholes-repaired-by-quarter">Boreholes repaired by quarter</h2>
+<p>The column chart below shows borehole numbers repaired by quarter and year.</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: Column graph showing number of boreholes repaired by quarter of a year</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Borehole by quarter repaired</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> processed_borehole_data <span class="sc">|&gt;</span>  </span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(repair_date) <span class="sc">|&gt;</span> </span>
@@ -220,11 +284,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Repair date/ Quarter"</span>)<span class="sc">+</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"No. of Boreholes"</span>)<span class="sc">+</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Borehole repaired by quarter of the year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># table creation</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tbl_bhr_summary <span class="ot">&lt;-</span> district_column <span class="sc">|&gt;</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(district) <span class="sc">|&gt;</span> </span>
@@ -236,14 +303,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  ) </span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># export table to processed folder </span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(tbl_bhr_summary, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/processed/tbl-01-bhr-summary.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<p><span class="citation" data-cites="tbl_bhr_summary">@tbl_bhr_summary</span> shows that Wakiso District has more people served by just 11 boreholes compared to Luwero District which has 136 boreholes.</p>
+<p><span class="citation" data-cites="tbl_bhr_summary">(<a href="#ref-tbl_bhr_summary" role="doc-biblioref"><strong>tbl_bhr_summary?</strong></a>)</span> shows that Wakiso District has more people served by just 11 boreholes compared to Luwero District which has 136 boreholes.</p>
+</section>
+<section id="boreholes-characteristics" class="level2">
+<h2 class="anchored" data-anchor-id="boreholes-characteristics">Boreholes characteristics</h2>
+<p>The table below shows borehole characteristics in the two districts of operation.</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using kable() to display the bhr-summary table</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tbl_bhr_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
-<caption>Borehole population served summary, data from two districts </caption>
+<caption>Borehole population served summary data from two districts </caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">district</th>
@@ -281,7 +356,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
 <p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
@@ -307,9 +385,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="references" class="level1">
 <h1>References</h1>
 <p>```</p>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-owor2022permeability" class="csl-entry" role="listitem">
+Owor, Michael, Joseph Okullo, Helen Fallas, Alan M MacDonald, Richard Taylor, and Donald John MacAllister. 2022. <span>“Permeability of the Weathered Bedrock Aquifers in Uganda: Evidence from a Large Pumping-Test Dataset and Its Implications for Rural Water Supply.”</span> <em>Hydrogeology Journal</em> 30 (7): 2223–35.
+</div>
+<div id="ref-smith2023does" class="csl-entry" role="listitem">
+Smith, Daniel W, Stephen Atwii Ongom, and Jennifer Davis. 2023. <span>“Does Professionalizing Maintenance Unlock Demand for More Reliable Water Supply? Experimental Evidence from Rural Uganda.”</span> <em>World Development</em> 161: 106094.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
