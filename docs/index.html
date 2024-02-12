@@ -102,12 +102,16 @@ div.csl-indent {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#project-description-" id="toc-project-description-" class="nav-link" data-scroll-target="#project-description-">Project Description:-</a>
+  <li><a href="#project-description-" id="toc-project-description-" class="nav-link" data-scroll-target="#project-description-">Project Description:-</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
   <ul class="collapse">
   <li><a href="#raw-data" id="toc-raw-data" class="nav-link" data-scroll-target="#raw-data">Raw Data</a></li>
-  </ul></li>
   <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation">Data Transformation</a></li>
   <li><a href="#processed-data" id="toc-processed-data" class="nav-link" data-scroll-target="#processed-data">Processed Data</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
   <li><a href="#distribution-of-well-depth" id="toc-distribution-of-well-depth" class="nav-link" data-scroll-target="#distribution-of-well-depth">Distribution of well depth</a></li>
   <li><a href="#well-yield-and-population" id="toc-well-yield-and-population" class="nav-link" data-scroll-target="#well-yield-and-population">Well Yield and Population</a></li>
   <li><a href="#boreholes-repaired-by-quarter" id="toc-boreholes-repaired-by-quarter" class="nav-link" data-scroll-target="#boreholes-repaired-by-quarter">Boreholes repaired by quarter</a></li>
@@ -115,8 +119,6 @@ div.csl-indent {
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
   <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
   </ul></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -157,7 +159,12 @@ div.csl-indent {
 <h1>Introduction</h1>
 <section id="project-description-" class="level2">
 <h2 class="anchored" data-anchor-id="project-description-">Project Description:-</h2>
-<p>The objective of this project will be analyzing and interpreting raw borehole repair data to aid planing and decision making. Boreholes are the main technology used to access ground water in Uganda according to <span class="citation" data-cites="owor2022permeability">(<a href="#ref-owor2022permeability" role="doc-biblioref">Owor et al. 2022</a>)</span>, it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at the future for borehole functionality in Uganda <span class="citation" data-cites="smith2023does">(<a href="#ref-smith2023does" role="doc-biblioref">Smith, Ongom, and Davis 2023</a>)</span>, this project report offers more insights on the case.</p>
+<p>This project will objectively be analyzing and interpreting raw borehole repair data to aid planing and decision making. Boreholes are the main technology used to access ground water in Uganda according to <span class="citation" data-cites="owor2022permeability">(<a href="#ref-owor2022permeability" role="doc-biblioref">Owor et al. 2022</a>)</span>, and also a source for drinking water for households in rural communities in Africa, Uganda inclusive <span class="citation" data-cites="lapworth2020drinking">(<a href="#ref-lapworth2020drinking" role="doc-biblioref">Lapworth et al. 2020</a>,)</span>, therefore it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at the future for borehole functionality in Uganda <span class="citation" data-cites="smith2023does">(<a href="#ref-smith2023does" role="doc-biblioref">Smith, Ongom, and Davis 2023</a>)</span>, this project report offers more insights on research for this topic.</p>
+</section>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>This data is collected from a sample of borehole repair records used by the borehole operation and maintenance company operating in central Uganda. Population data is picked as an interview from a representative of the Local Water User Committees (LWUCs). The data on the technical specifications about the borehole is picked from the borehole records file from the company.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -184,9 +191,8 @@ div.csl-indent {
 </details>
 </div>
 </section>
-</section>
-<section id="data-transformation" class="level2">
-<h2 class="anchored" data-anchor-id="data-transformation">Data Transformation</h2>
+<section id="data-transformation" class="level3">
+<h3 class="anchored" data-anchor-id="data-transformation">Data Transformation</h3>
 <p>Transforming the data into a readable variable name</p>
 <div class="cell">
 <details>
@@ -197,8 +203,8 @@ div.csl-indent {
 </details>
 </div>
 </section>
-<section id="processed-data" class="level2">
-<h2 class="anchored" data-anchor-id="processed-data">Processed Data</h2>
+<section id="processed-data" class="level3">
+<h3 class="anchored" data-anchor-id="processed-data">Processed Data</h3>
 <p>Writing the processed data ready for analysis into the processed folder</p>
 <div class="cell">
 <details>
@@ -222,8 +228,11 @@ div.csl-indent {
 </details>
 </div>
 </section>
-<section id="distribution-of-well-depth" class="level2">
-<h2 class="anchored" data-anchor-id="distribution-of-well-depth">Distribution of well depth</h2>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<section id="distribution-of-well-depth" class="level3">
+<h3 class="anchored" data-anchor-id="distribution-of-well-depth">Distribution of well depth</h3>
 <p>The histogram below showing the distribution of well depth across two districts.</p>
 <div class="cell">
 <details>
@@ -240,6 +249,7 @@ div.csl-indent {
 <p><img src="index_files/figure-html/Histogram%20showing%20distribution%20of%20well_depth%20per%20district-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>From the histogram above we can conclude that the average depth of boreholes in both Wakiso and Luwero District is similar. For both districts the depth of the biggest percentage of boreholes is below 75 meters deep. We can also see that there are extreme instances in Luwero district where three boreholes are deeper than 100 meters.</p>
 </section>
 <section id="well-yield-and-population" class="level2">
 <h2 class="anchored" data-anchor-id="well-yield-and-population">Well Yield and Population</h2>
@@ -373,12 +383,6 @@ div.csl-indent {
 <p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
 </section>
 </section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-</section>
-<section id="results" class="level1">
-<h1>Results</h1>
-</section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
 </section>
@@ -389,6 +393,9 @@ div.csl-indent {
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-lapworth2020drinking" class="csl-entry" role="listitem">
+Lapworth, DJ, AM MacDonald, S Kebede, M Owor, G Chavula, H Fallas, P Wilson, et al. 2020. <span>“Drinking Water Quality from Rural Handpump-Boreholes in Africa.”</span> <em>Environmental Research Letters</em> 15 (6): 064020.
+</div>
 <div id="ref-owor2022permeability" class="csl-entry" role="listitem">
 Owor, Michael, Joseph Okullo, Helen Fallas, Alan M MacDonald, Richard Taylor, and Donald John MacAllister. 2022. <span>“Permeability of the Weathered Bedrock Aquifers in Uganda: Evidence from a Large Pumping-Test Dataset and Its Implications for Rural Water Supply.”</span> <em>Hydrogeology Journal</em> 30 (7): 2223–35.
 </div>

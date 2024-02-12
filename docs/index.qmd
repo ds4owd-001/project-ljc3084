@@ -16,7 +16,10 @@ editor: visual
 
 ## Project Description:-
 
-The objective of this project will be analyzing and interpreting raw borehole repair data to aid planing and decision making. Boreholes are the main technology used to access ground water in Uganda according to [@owor2022permeability], it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at the future for borehole functionality in Uganda [@smith2023does], this project report offers more insights on the case.  
+This project will objectively be analyzing and interpreting raw borehole repair data to aid planing and decision making. Boreholes are the main technology used to access ground water in Uganda according to [@owor2022permeability], and also a source for drinking water for households in rural communities in Africa, Uganda inclusive [@lapworth2020drinking,], therefore it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at the future for borehole functionality in Uganda [@smith2023does], this project report offers more insights on research for this topic.  
+
+# Methods
+This data is collected from a sample of borehole repair records used by the borehole operation and maintenance company operating in central Uganda. Population data is picked as an interview from a representative of the Local Water User Committees (LWUCs). The data on the technical specifications about the borehole is picked from the borehole records file from the company.
 
 ```{r}
 library(DataCombine)
@@ -32,14 +35,14 @@ library(dplyr)
 library(knitr)
 ```
 
-## Raw Data
+### Raw Data
 We start by reading the raw data from the .csv file
 
 ```{r}
 borehole <- read_csv(here::here("data/raw/borehole_repair_data.csv"))
 ```
 
-## Data Transformation
+### Data Transformation
 Transforming the data into a readable variable name
 
 ```{r}
@@ -50,7 +53,7 @@ new_well_yield <- borehole |>
 
 ```
 
-## Processed Data
+### Processed Data
 Writing the processed data ready for analysis into the processed folder
 
 ```{r}
@@ -72,7 +75,9 @@ mutate(district = case_when(
   ))
 
 ```
-## Distribution of well depth
+# Results
+
+### Distribution of well depth
 The histogram below showing the distribution of well depth across two districts.
 
 ```{r}
@@ -86,6 +91,8 @@ ggplot(data = district_column,
   ylab("No. of Boreholes")+
 labs(title = "Borehole population served summary, data from two districts")
 ```
+From the histogram above we can conclude that the average depth of boreholes in both Wakiso and Luwero District is similar. For both districts the depth of the biggest percentage of boreholes is below 75 meters deep. We can also see that there are extreme instances in Luwero district where three boreholes are deeper than 100 meters.
+
 ## Well Yield and Population
 The scatterplot below showing well yield distribution and population served across the two districts.
 ```{r}
@@ -173,9 +180,8 @@ You can add options to executable code like this
 
 The `echo: false` option disables the printing of code (only output is displayed).
 
-# Methods
 
-# Results
+
 
 # Conclusions
 
