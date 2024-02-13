@@ -117,7 +117,6 @@ div.csl-indent {
   <li><a href="#boreholes-repaired-by-quarter" id="toc-boreholes-repaired-by-quarter" class="nav-link" data-scroll-target="#boreholes-repaired-by-quarter">Boreholes repaired by quarter</a></li>
   <li><a href="#boreholes-characteristics" id="toc-boreholes-characteristics" class="nav-link" data-scroll-target="#boreholes-characteristics">Boreholes characteristics</a></li>
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
   </ul></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -159,7 +158,7 @@ div.csl-indent {
 <h1>Introduction</h1>
 <section id="project-description-" class="level2">
 <h2 class="anchored" data-anchor-id="project-description-">Project Description:-</h2>
-<p>This project will objectively be analyzing and interpreting raw borehole repair data to aid planing and decision making. Boreholes are the main technology used to access ground water in Uganda according to <span class="citation" data-cites="owor2022permeability">(<a href="#ref-owor2022permeability" role="doc-biblioref">Owor et al. 2022</a>)</span>, and also a source for drinking water for households in rural communities in Africa, Uganda inclusive <span class="citation" data-cites="lapworth2020drinking">(<a href="#ref-lapworth2020drinking" role="doc-biblioref">Lapworth et al. 2020</a>,)</span>, therefore it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at the future for borehole functionality in Uganda <span class="citation" data-cites="smith2023does">(<a href="#ref-smith2023does" role="doc-biblioref">Smith, Ongom, and Davis 2023</a>)</span>, this project report offers more insights on research for this topic.</p>
+<p>This project will objectively be analyzing and interpreting raw borehole repair data to aid planning and decision making. Boreholes are the main technology used to access ground water in Uganda according to <span class="citation" data-cites="owor2022permeability">(<a href="#ref-owor2022permeability" role="doc-biblioref">Owor et al. 2022</a>)</span>, and also a source for drinking water for households in rural communities in Africa, Uganda inclusive <span class="citation" data-cites="lapworth2020drinking">(<a href="#ref-lapworth2020drinking" role="doc-biblioref">Lapworth et al. 2020</a>,)</span>, therefore it is important to have good quality data to inform decision making and planning. This project looks at data collected from two districts in central Uganda where a borehole operation and maintenance program is run. As professional operation and maintenance is looked at as the future for borehole functionality in Uganda <span class="citation" data-cites="smith2023does">(<a href="#ref-smith2023does" role="doc-biblioref">Smith, Ongom, and Davis 2023</a>)</span>, this project report offers more insights on research for this topic.</p>
 </section>
 </section>
 <section id="methods" class="level1">
@@ -272,6 +271,7 @@ div.csl-indent {
 <p><img src="index_files/figure-html/Chart%20showing%20distribution%20of%20well%20yield%20according%20to%20Population%20served-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>The scatter plot chart above shows us that the average population served by a borehole in the two districts where the sample data was collected from is 1000 people. We also learn that the average yield of boreholes in these two districts is 12.5 m3. We see cases where the population served and yield of boreholes goes above average, those are areas where we can investigate further.</p>
 </section>
 <section id="boreholes-repaired-by-quarter" class="level2">
 <h2 class="anchored" data-anchor-id="boreholes-repaired-by-quarter">Boreholes repaired by quarter</h2>
@@ -299,6 +299,7 @@ div.csl-indent {
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>The column chart above informs us the year and quarter when the majority of of boreholes were repaired. In this case with the data set that we have most boreholes 73 boreholes were repaired in the year 2022. In terms of the quarter where majority of boreholes were repaired we see that for the 2021 majority of the boreholes (31) were repaired in the last quarter, for 2022 majority of the boreholes (23) were repaired in the first quarter and then finally in the year 2023, (19) boreholes were repaired in the second quarter.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -357,38 +358,29 @@ div.csl-indent {
 </table>
 </div>
 </div>
+<p>The table above shows us the total number of boreholes repaired in each of the target districts, the mean, standard deviation and median of the population served in each of the target districts.</p>
 </section>
 <section id="quarto" class="level2">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
-</section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
 </section>
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
+<p>From this data and the investigation carried out we can conclude that;</p>
+<ul>
+<li>Boreholes in Wakiso and Luwero districts have an average depth between 30 and 75 meters.</li>
+<li>The yield of most boreholes in these two districts is below 12.5m3.</li>
+<li>The percentage of boreholes were repaired in the last quarter of 2021 and the first quarter of 2022 is 34.6%.</li>
+</ul>
 </section>
-<section id="references" class="level1">
-<h1>References</h1>
-<p>```</p>
+<section id="references" class="level1 unnumbered">
+
 
 </section>
 
