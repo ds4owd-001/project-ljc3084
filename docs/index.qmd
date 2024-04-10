@@ -84,10 +84,11 @@ mutate(district = case_when(
 
 ### Distribution of well depth
 
-The histogram below showing the distribution of well depth across two districts.
+@fig-welldepth-hist is a histogram showing the distribution of well depth across two districts.
 
 ```{r}
-#| label: Histogram showing distribution of well_depth per district
+#| label: fig-welldepth-hist
+#| fig-cap: Histogram showing distribution of well_depth per district
 
 ggplot(data = district_column,
        mapping = aes(x = well_depth,
@@ -102,10 +103,11 @@ From the histogram above we can conclude that the average depth of boreholes in 
 
 ## Well Yield and Population
 
-The scatterplot below showing well yield distribution and population served across the two districts.
+@fig-wellyield-vs-population-scatplot is a scatterplot showing well yield distribution and population served across the two districts.
 
 ```{r}
-#| label: Chart showing distribution of well yield according to Population served
+#| label: fig-wellyield-vs-population-scatplot
+#| fig-cap: Scatterplot showing well yield distribution and Population served  in two districts
 ggplot(data = district_column, 
        mapping = aes(x = population_served, 
                      y = well_yield, 
@@ -122,11 +124,11 @@ The scatter plot chart above shows us that the average population served by a bo
 
 ## Boreholes repaired by quarter
 
-The column chart below shows borehole numbers repaired by quarter and year.
+@fig-borehole-repair-by-quarter-and-year-col is a column chart showing borehole numbers repaired by quarter and year.
 
 ```{r}
-
-#| label: Column graph showing number of boreholes repaired by quarter of a year
+#| label: fig-borehole-repair-by-quarter-and-year-col
+#| fig-cap: Column chart showing number of boreholes repaired by quarter of a year
 
 
 summary_data <- processed_borehole_data |>  
@@ -134,16 +136,16 @@ summary_data <- processed_borehole_data |>
   summarise(count = n())
 
 ggplot(data = summary_data,
-       mapping = aes(x = quarter(repair_date),
+       mapping = aes(x = year(repair_date),
                      y = count,
-                     fill = year(repair_date))) +
+                     fill = quarter(repair_date))) +
   geom_col()+
-  xlab("Repair date/ Quarter")+
+  xlab("Repair date/ Year")+
   ylab("No. of Boreholes")+
 labs(title = "Borehole repaired by quarter of the year")
 ```
 
-The column chart above informs us the year and quarter when the majority of of boreholes were repaired. In this case with the data set that we have most boreholes 73 boreholes were repaired in the year 2022. In terms of the quarter where majority of boreholes were repaired we see that for the 2021 majority of the boreholes (31) were repaired in the last quarter, for 2022 majority of the boreholes (23) were repaired in the first quarter and then finally in the year 2023, (19) boreholes were repaired in the second quarter.
+The column chart above informs us the year and quarter when the majority of boreholes were repaired. In this case with the data set that we have most boreholes 73 boreholes were repaired in the year 2022. In terms of the quarter where majority of boreholes were repaired we see that for the 2021 all of the boreholes (31) were repaired in the last quarter, for 2022 majority of the boreholes (23) were repaired in the first quarter and then finally in the year 2023, (19) boreholes were repaired in the second quarter.
 
 ```{r}
 # table creation
@@ -165,10 +167,10 @@ write_csv(tbl_bhr_summary, here::here("data/processed/tbl-01-bhr-summary.csv"))
 
 ## Boreholes characteristics
 
-The table below shows borehole characteristics in the two districts of operation.
+@tbl-bhr_summary shows borehole characteristics in the two districts of operation.
 
 ```{r}
-#| label: tbl_bhr_summary
+#| label: tbl-bhr_summary
 #| tbl-cap: "Borehole population served summary data from two districts"
 # Using kable() to display the bhr-summary table
 kable(tbl_bhr_summary)

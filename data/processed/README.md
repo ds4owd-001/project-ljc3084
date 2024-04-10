@@ -2,16 +2,16 @@
 
 ## General information
 
-1.  Title of Dataset:  
+1.  Title of Dataset: Borehole Repair Data 
 
-2.  Author Information
+2.  Author Information: Joseph Lwere
 
 **Author A**
 
 - First name: Joseph
 - Surname: Lwere
-- ORCID iD
-- Email:ljc3084@gmail.com
+- ORCID iD: 0009-0009-7113-2303
+- Email: ljc3084@gmail.com
 
 **Author B**
 
@@ -22,7 +22,7 @@
 
 etc.
 
-3.  Date of data collection (single date, range, approximate date):
+3.  Date of data collection (single date, range, approximate date): N/A
 
 4.  Geographic location of data collection:
 
@@ -31,7 +31,7 @@ etc.
 
 ## Sharing / access information
 
-1.  Licenses/restrictions placed on the data:  
+1.  Licenses/restrictions placed on the data: CC-BY-4.0
 
 Recommended: This work is licensed under the Creative Commons Attribution 4.0 International license (CC-BY-4.0).
 
@@ -45,9 +45,9 @@ Recommended: This work is licensed under the Creative Commons Attribution 4.0 In
 
 ## Methodological information
 
-1.  Description of methods used for collection/generation of data:
+1.  Description of methods used for collection/generation of data: Random Sampling
 
-2.  Methods for processing the data:
+2.  Methods for processing the data: 
 
 3.  Instrument- or software-specific information needed to interpret the
     data: 
