@@ -22,9 +22,9 @@
 
 etc.
 
-3.  Date of data collection (single date, range, approximate date): N/A
+3.  Date of data collection (single date, range, approximate date): Oct 15, 2021 - Nov 30, 2023
 
-4.  Geographic location of data collection:
+4.  Geographic location of data collection: Wakiso and Luwero Districts, Ugandan
 
 5.  Information about funding sources that supported the collection of
     the data: 
@@ -33,21 +33,21 @@ etc.
 
 1.  Licenses/restrictions placed on the data: CC-BY-4.0
 
-Recommended: This work is licensed under the Creative Commons Attribution 4.0 International license (CC-BY-4.0).
+This work is licensed under the Creative Commons Attribution 4.0 International license (CC-BY-4.0).
 
 2.  Links to publications that cite or use the data: 
 
-3.  Links to other publicly accessible locations of the data: -
+3.  Links to other publicly accessible locations of the data: - N/A
 
 4.  Links/relationships to ancillary data sets: 
 
-5.  Was data derived from another source? 
+5.  Was data derived from another source? No
 
 ## Methodological information
 
-1.  Description of methods used for collection/generation of data: Random Sampling
+1.  Description of methods used for collection/generation of data: Random Sampling 
 
-2.  Methods for processing the data: 
+2.  Methods for processing the data: Data Aggregation and Visualisation
 
 3.  Instrument- or software-specific information needed to interpret the
     data: 
@@ -59,5 +59,5 @@ Recommended: This work is licensed under the Creative Commons Attribution 4.0 In
 6.  Describe any quality-assurance procedures performed on the data: 
 
 7.  People involved with sample collection, processing, analysis and/or
-    submission:
+    submission: N/A
 
